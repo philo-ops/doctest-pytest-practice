@@ -22,7 +22,7 @@ def evens(n):
     []
     '''
     numbers = range(0, n + 1)
-    even = filter(lambda x: x% 2 == 0, numbers)
+    even = filter(lambda x: x % 2 == 0, numbers)
     return list(even)
 
 
@@ -44,12 +44,13 @@ def threes(n):
     '''
     numbers = range(0, n + 1)
 
-   def contains3(x):
+    def contains3(x):
         digits = str(x)
-        matches = filter(lambda d: d== '3', digits)
+        matches = filter(lambda d: d == '3', digits)
         return len(list(matches)) > 0
     three = filter(contains3, numbers)
     return list(three)
+
 
 def small_words(text):
     '''
@@ -72,6 +73,7 @@ def small_words(text):
     smalls = filter(lessthan5, words)
     return list(smalls)
 
+
 def squares(n):
     '''
     Returns a list of all square number between 1 and n inclusive.
@@ -89,6 +91,7 @@ def squares(n):
     numbers = list(range(1, n + 1))
     squares = map(lambda x: x*x, numbers)
     return list(squares)
+
 
 def lengths(strings):
     '''
