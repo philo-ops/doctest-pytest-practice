@@ -2,7 +2,7 @@
 All the functions in this file convert markdown syntax into html.
 Implementing these functions will give you practice learning the correct markdown syntax.
 '''
-
+import re
 def compile_italic_underscore(line):
     '''
     Convert "_italic_" into "<i>italic</i>".
@@ -26,7 +26,7 @@ def compile_italic_underscore(line):
     >>> compile_italic_underscore('')
     ''
     '''
-    return line
+    return re.sub(r'_(.+?)_', r'<i>\1</i>', line)
 
 
 def compile_bold_stars(line):
@@ -50,7 +50,7 @@ def compile_bold_stars(line):
     >>> compile_bold_stars('***')
     '***'
     '''
-    return line
+    return re.sub(r'\*\*([^*]*?)\*\*', r'<b>\1</b>', line)
 
 
 def compile_links(line):
@@ -76,4 +76,4 @@ def compile_links(line):
     >>> compile_links('nothing here](oops)')
     'nothing here](oops)'
     '''
-    return line
+    return re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2">\1</a>', line)
