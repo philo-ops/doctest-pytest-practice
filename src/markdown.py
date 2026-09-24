@@ -1,8 +1,11 @@
 '''
 All the functions in this file convert markdown syntax into html.
-Implementing these functions will give you practice learning the correct markdown syntax.
+Implementing these functions will give you practice learning the correct
+markdown syntax.
 '''
 import re
+
+
 def compile_italic_underscore(line):
     '''
     Convert "_italic_" into "<i>italic</i>".
@@ -19,7 +22,7 @@ def compile_italic_underscore(line):
     '_'
     >>> compile_italic_underscore('_a_ and _b_')
     '<i>a</i> and <i>b</i>'
-    >>> compile_italic_underscore('_a_ and _b')          # odd count: last one is literal
+    >>> compile_italic_underscore('_a_ and _b') #odd count:last one is literal
     '<i>a</i> and _b'
     >>> compile_italic_underscore('no underscores here')
     'no underscores here'
@@ -56,19 +59,14 @@ def compile_bold_stars(line):
 def compile_links(line):
     '''
     Add <a> tags.
-
-    HINT:
-    The links and images are potentially more complicated because they have many types of delimeters: `[]()`.
-    These delimiters are not symmetric, however, so we can more easily find the start and stop locations using the strings find function.
-
-    >>> compile_links('Click on the [course webpage](https://github.com/mikeizbicki/cmc-csci040)!')
-    'Click on the <a href="https://github.com/mikeizbicki/cmc-csci040">course webpage</a>!'
-    >>> compile_links('[course webpage](https://github.com/mikeizbicki/cmc-csci040)')
-    '<a href="https://github.com/mikeizbicki/cmc-csci040">course webpage</a>'
-    >>> compile_links('this is wrong: [course webpage]    (https://github.com/mikeizbicki/cmc-csci040)')
-    'this is wrong: [course webpage]    (https://github.com/mikeizbicki/cmc-csci040)'
-    >>> compile_links('this is wrong: [course webpage](https://github.com/mikeizbicki/cmc-csci040')
-    'this is wrong: [course webpage](https://github.com/mikeizbicki/cmc-csci040'
+    >>> compile_links('Click on the [course webpage](https://github.com)!')
+    'Click on the <a href="https://github.com">course webpage</a>!'
+    >>> compile_links('[course webpage](https://github.com/mikeizbicki)')
+    '<a href="https://github.com/mikeizbicki">course webpage</a>'
+    >>> compile_links('wrong: [course webpage]    (https://github.com)')
+    'wrong: [course webpage]    (https://github.com)'
+    >>> compile_links('wrong: [course webpage](https://github.com/mike')
+    'wrong: [course webpage](https://github.com/mike'
     >>> compile_links('[a](1) and [b](2)')
     '<a href="1">a</a> and <a href="2">b</a>'
     >>> compile_links('(parens) then [t](u)')
